@@ -19,10 +19,19 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/{username}") // get deprtment details
-    public ResponseEntity<?> getAllDepartments(@PathVariable String username) {
+    public ResponseEntity<?> getAllUsers(@PathVariable String username) {
         DAOUser user = userService.getUserByUserName(username);
         if (user != null) {
             return new ResponseEntity<>(user,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(value = "/{role}") // get doctor details
+    public ResponseEntity<?> getAllDoctors(@PathVariable String role) {
+        DAOUser doctor = userService.getDoctorByRole(role);
+        if (doctor != null) {
+            return new ResponseEntity<>(doctor,HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
