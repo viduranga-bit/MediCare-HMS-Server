@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Server.MediCareServer.model.DAOUser;
+import com.Server.MediCareServer.model.UserDTO;
 import com.Server.MediCareServer.repository.UserRepository;
 
 @Service
@@ -19,10 +20,8 @@ public class UserService {
 		DAOUser user = userDao.findByUsername(username);
 		return user;
     }
-
-	public DAOUser getDoctorByRole(String role) {
-	 	DAOUser doctor = userDao.findByRole(role);
-	 	return doctor;
-     }
+    public List<DAOUser> getDoctorByRole(String role) {
+		return userDao.getDoctorByRole(role);
+	}
 	
 }

@@ -51,7 +51,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http.csrf().disable()
 		.authorizeRequests().antMatchers("/helloadmin").hasRole("ADMIN")
 		.antMatchers("/hellouser").hasAnyRole("USER","ADMIN")
-		.antMatchers("/authenticate", "/register", "/validate/{token}","/api/v1/departments","/api/v1/departments/{dept_Id}","/api/v1/users/{username}","/api/v1/users/{role}" ).permitAll().anyRequest().authenticated()
+		.antMatchers("/authenticate", "/register", "/validate/{token}","/api/v1/departments","/api/v1/departments/{dept_Id}","/api/v1/users/{username}","/api/v1/users/role/{role}" ).permitAll().anyRequest().authenticated()
 		.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).
 		and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).
 		and().addFilterBefore(customJwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

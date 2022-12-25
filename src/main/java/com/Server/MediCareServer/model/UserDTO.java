@@ -1,6 +1,7 @@
 package com.Server.MediCareServer.model;
 
 public class UserDTO {
+	private long id;	
 	private String username;
 	private String password;
 	private String role;
@@ -18,8 +19,8 @@ public class UserDTO {
 		this.password = password;
 	}
 
-	public UserDTO(String username, String password, String role, String phone, String name, String email,
-			String address, int roleid) {
+	public UserDTO(long id,String username, String password, String role, String phone, String name, String email,String address, int roleid) {
+		this.id=id;
 		this.username = username;
 		this.password = password;
 		this.role = role;
@@ -29,7 +30,14 @@ public class UserDTO {
 		this.address = address;
 		this.roleid = roleid;
 	}
+   
+	public long getId() {
+		return id;
+	}
 
+	public void setId(long role) {
+		this.id = id;
+	}
 	public String getRole() {
 		return role;
 	}

@@ -2,8 +2,9 @@ package com.Server.MediCareServer.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "userdetail")
 @Table(name = "user_tbl")
+
 public class DAOUser {
 
 	@Id
@@ -26,6 +27,13 @@ public class DAOUser {
 	@Column
 	private int roleid;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getRole() {
 		return role;
 	}
