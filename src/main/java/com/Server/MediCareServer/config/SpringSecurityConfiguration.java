@@ -25,9 +25,16 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+<<<<<<< Updated upstream
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
+=======
+	
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder(){
+>>>>>>> Stashed changes
 		return new BCryptPasswordEncoder();
 	}
 
