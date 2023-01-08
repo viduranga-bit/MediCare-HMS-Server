@@ -15,45 +15,48 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
+public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
+	
 	@Autowired
 	private CustomUserDetailsService userDetailsService;
-
+	
 	@Autowired
 	private CustomJwtAuthenticationFilter customJwtAuthenticationFilter;
-
+	
 	@Autowired
 	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-
-  ;
+	
+	
+	
 	@Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
+	public PasswordEncoder passwordEncoder(){
+		return new BCryptPasswordEncoder();
+	}
+	
+	
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
-
+	
 	@Bean
 	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
+	public AuthenticationManager authenticationManagerBean() throws Exception
+	{
 		return super.authenticationManagerBean();
 	}
-
+	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
-				.authorizeRequests().antMatchers("/helloadmin").hasRole("ADMIN")
-				.antMatchers("/hellouser").hasAnyRole("USER", "ADMIN","N")
-				.antMatchers("/authenticate", "/register", "/validate/{token}", "/api/v1/departments",
-						"/api/v1/departments/{dept_Id}", "/api/v1/users/{username}", "/api/v1/users/role/{role}",
-						"/api/v1/users/delete/{id}")
-				.permitAll().anyRequest().authenticated()
-				.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-				.addFilterBefore(customJwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+		.authorizeRequests().antMatchers("/helloadmin").hasRole("ADMIN")
+		.antMatchers("/hellouser").hasAnyRole("USER","ADMIN")
+		.antMatchers("/authenticate", "/register", "/validate/{token}","/api/v1/departments","/api/v1/departments/{dept_Id}","/api/v1/users/{username}","/api/v1/users/role/{role}" ).permitAll().anyRequest().authenticated()
+		.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).
+		and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).
+		and().addFilterBefore(customJwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 	}
+
+
 
 }

@@ -20,10 +20,8 @@ public class UserService {
 		DAOUser user = userDao.findByUsername(username);
 		return user;
     }
-    public List<DAOUser> getUserByRole(String role) {
+    public List<DAOUser> getDoctorByRole(String role) {
 		return userDao.getDoctorByRole(role);
 	}
-
-	
 	
 }
