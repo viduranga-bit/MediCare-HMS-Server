@@ -58,4 +58,7 @@ public class Patient {
 
     @Column(name = "mobileNo")
     private String mobileNo;
+
+    @Column(name = "specialNote")
+    private String specialNote;
 }
