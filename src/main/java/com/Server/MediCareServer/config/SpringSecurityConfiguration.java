@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -25,16 +24,13 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-<<<<<<< Updated upstream
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-=======
+
 	
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder(){
->>>>>>> Stashed changes
+
 		return new BCryptPasswordEncoder();
 	}
 
