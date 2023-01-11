@@ -33,8 +33,7 @@ public class Patient {
     @JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
     @Column(name = "admitdate")
     private String admitdate;
-
-
+     
     @Temporal(TemporalType.TIME)
     @Column(name = "admitTime")
     private Date admitTime=new Date(System.currentTimeMillis());
@@ -47,7 +46,8 @@ public class Patient {
 
     @Column(name = "email")
     private String email;
-
+    @Column(name = "gender")
+    private String gender;
     @Column(name = "bloodGroup")
     private String bloodGroup;
     @Column(name = "address")

@@ -7,6 +7,6 @@ import com.Server.MediCareServer.model.Patient;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient,Long> {
 
-
+   Patient findById(long pid);
 
 }

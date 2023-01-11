@@ -32,7 +32,7 @@ public class DepartmentController {
     @DeleteMapping("{dept_Id}")
     public ResponseEntity<HttpStatus> deleteDepartment(@PathVariable(value = "dept_Id") long dept_Id){
        Department department = departmentRepository.findById(dept_Id)
-               .orElseThrow(() ->new ResourseNotFoundException("Employee not exist with id :"+dept_Id));
+               .orElseThrow(() ->new ResourseNotFoundException("Department not exist with id :"+dept_Id));
       // System.out.println(department);
        departmentRepository.deleteById(dept_Id);
 
