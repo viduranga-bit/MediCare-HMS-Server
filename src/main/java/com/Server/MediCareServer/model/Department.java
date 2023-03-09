@@ -20,4 +20,6 @@ public class Department {
     private String deptName;
     @Column(name = "Description")
     private String Description;
+
+    
 }

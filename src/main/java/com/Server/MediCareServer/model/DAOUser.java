@@ -1,5 +1,8 @@
 package com.Server.MediCareServer.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity(name = "userdetail")
@@ -93,4 +96,6 @@ public class DAOUser {
 	public String getAddress() {
 		return address;
 	}
+
+   
 }

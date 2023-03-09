@@ -1,5 +1,10 @@
 package com.Server.MediCareServer.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.ManyToMany;
+
 public class UserDTO {
 	private long id;	
 	private String username;
@@ -96,4 +101,7 @@ public class UserDTO {
 	public void setEAddress(String address) {
 		this.address = address;
 	}	
+
+	@ManyToMany(mappedBy = "patient_User")
+	private Set<Patient> patientsSet = new HashSet<>();	
 }

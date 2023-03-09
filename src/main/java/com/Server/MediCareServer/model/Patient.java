@@ -2,6 +2,8 @@ package com.Server.MediCareServer.model;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -61,4 +63,21 @@ public class Patient {
 
     @Column(name = "specialNote")
     private String specialNote;
+
+    @Column(name = "doc_id")
+    private String doc_id;
+    
+    @Column(name = "age")
+    private String age;
+
+
+    @ManyToMany
+    @JoinTable(name="patient_user",
+    joinColumns = @JoinColumn(name="patient_Id"),
+
+        
+    
+    inverseJoinColumns = @JoinColumn(name = "user_Id")
+    )
+    private  Set<DAOUser> user = new HashSet<>();
 }
