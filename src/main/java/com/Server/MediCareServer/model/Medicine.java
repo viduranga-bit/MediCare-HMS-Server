@@ -28,6 +28,7 @@ public class Medicine {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long medicineId;
+    
     @Column(name = "medicineName")
     private String medicineName;
 

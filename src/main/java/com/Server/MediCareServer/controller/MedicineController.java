@@ -34,9 +34,9 @@ public class MedicineController {
     @GetMapping
     public List<Medicine> getAllMedicines(){
 
-        return medicineService.getAllMedicine();
+        return medicineService.findAllOrderByIdDsc();
 
-    }
+    }   
 
 
     
