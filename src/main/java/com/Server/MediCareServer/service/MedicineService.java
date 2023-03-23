@@ -18,11 +18,6 @@ public class MedicineService {
     @Autowired
 	private MedicineRepository medicineRepository;
 	
-	//  public List<Medicine> getAllMedicine() {
-    
-    //         return  medicineRepository.findAll();
-
-    //  }
 
      
     public List<Medicine> findAllOrderByIdDsc() {

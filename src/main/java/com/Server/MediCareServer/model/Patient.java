@@ -67,6 +67,9 @@ public class Patient {
     @Column(name = "doc_id")
     private String doc_id;
     
+    @Column(name = "res_id")
+    private String res_id;
+
     @Column(name = "age")
     private String age;
 
