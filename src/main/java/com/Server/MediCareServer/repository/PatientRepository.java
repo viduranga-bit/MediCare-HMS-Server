@@ -1,6 +1,7 @@
 package com.Server.MediCareServer.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,7 +11,7 @@ import com.Server.MediCareServer.model.Patient;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient,Long> {
 
-   Patient findById(long pid);
+   Optional<Patient> findById(long pid);
 
          
    

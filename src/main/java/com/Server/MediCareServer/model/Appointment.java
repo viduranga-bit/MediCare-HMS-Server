@@ -24,8 +24,6 @@ public class Appointment {
     private String Description;
     
 
-    
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_patientId")
     private Patient patient;

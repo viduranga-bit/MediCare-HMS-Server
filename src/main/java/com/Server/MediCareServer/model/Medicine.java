@@ -33,8 +33,8 @@ public class Medicine {
     private String medicineName;
 
     @JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
-    @Column(name = "dateAdded")
-    private String dateAdded;
+    @Column(name = "date_added")
+    private String date_added;
 
     @Column(name = "ManufacturingCompany")
     private String manufacturingCompany;

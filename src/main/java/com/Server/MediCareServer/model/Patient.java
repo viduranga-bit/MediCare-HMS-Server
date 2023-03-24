@@ -29,9 +29,11 @@ public class Patient {
     private long patientId;
     @Column(name = "patient_name")
     private String patientName;
+
     @JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
     @Column(name = "dob")
     private String dob;
+
     @JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
     @Column(name = "admitdate")
     private String admitdate;
@@ -73,6 +75,9 @@ public class Patient {
     @Column(name = "age")
     private String age;
 
+    @Column(name = "isTreated")
+    private Boolean isTreated;
+
 
     @ManyToMany
     @JoinTable(name="patient_user",
@@ -83,4 +88,9 @@ public class Patient {
     inverseJoinColumns = @JoinColumn(name = "user_Id")
     )
     private  Set<DAOUser> user = new HashSet<>();
+
+
+    public boolean isPresent() {
+        return false;
+    }
 }

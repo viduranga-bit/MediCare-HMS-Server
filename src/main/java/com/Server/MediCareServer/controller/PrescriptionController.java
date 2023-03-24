@@ -18,7 +18,7 @@ import com.Server.MediCareServer.model.Prescription;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/v1/prescripton")
+@RequestMapping("/api/v1/prescription")
 public class PrescriptionController {
 
     @Autowired

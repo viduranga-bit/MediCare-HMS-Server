@@ -26,6 +26,9 @@ public class Prescription {
     @Column(name = "Description")
     private String Description;
 
+    @Column(name = "isRequestLabReport")
+    private boolean isRequestLabReport;
+
     @Column(name = "symptoms")
     private String symptoms;
 
