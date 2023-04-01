@@ -78,6 +78,8 @@ public class Patient {
     @Column(name = "isTreated")
     private Boolean isTreated;
 
+    @Column(name = "isRequestTest")
+    private Boolean isRequestTest;
 
     @ManyToMany
     @JoinTable(name="patient_user",
