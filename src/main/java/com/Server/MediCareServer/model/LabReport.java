@@ -27,14 +27,8 @@ public class LabReport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long labReport_Id;
 
-    @Column(name = "report_type")
-    private String reportType;
-
-    @Column(name = "document_type")
-    private String document_type;
-
-    @Column(name = "file_name")
-    private boolean file_name;
+    @Column(name = "reportName")
+    private String reportName;
 
     @Column(name = "prescription_id")
     private String symptoms;
@@ -42,9 +36,14 @@ public class LabReport {
     @Column(name = "description")
     private String description;
 
-    @JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
-    @Column(name = "submitDate")
-    private String submitDate;
+    @Column(name = "laboratarist_id")
+    private String laboratarist_id;
+
+    @Column(name = "patient_id")
+    private String patient_id;
+
+    @Column(name = "doc_id")
+    private String doc_id;
      
     @Temporal(TemporalType.TIME)
     @Column(name = "submitTime")
