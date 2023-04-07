@@ -29,9 +29,13 @@ public class LabReport {
 
     @Column(name = "reportName")
     private String reportName;
+    
+    @Lob
+    @Column(name = "content")
+    private byte[] content;
 
-    @Column(name = "prescription_id")
-    private String symptoms;
+    @Column(name = "fileName")
+    private String fileName;
     
     @Column(name = "description")
     private String description;
@@ -40,15 +44,19 @@ public class LabReport {
     private String laboratarist_id;
 
     @Column(name = "patient_id")
-    private String patient_id;
+    private Long patient_id;
 
-    @Column(name = "doc_id")
+    @Column(name = "price")
+    private Double price;
+
+    @Column(name = "doc_id" , insertable = false, updatable = false)
     private String doc_id;
      
     @Temporal(TemporalType.TIME)
     @Column(name = "submitTime")
     private Date submitTime=new Date(System.currentTimeMillis());
 
-
+   
+   
     
 }

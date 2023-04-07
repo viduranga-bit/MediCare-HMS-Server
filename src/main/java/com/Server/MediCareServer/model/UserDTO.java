@@ -3,7 +3,9 @@ package com.Server.MediCareServer.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 public class UserDTO {
 	private long id;	
@@ -104,4 +106,7 @@ public class UserDTO {
 
 	@ManyToMany(mappedBy = "patient_User")
 	private Set<Patient> patientsSet = new HashSet<>();	
+
+	
+    
 }

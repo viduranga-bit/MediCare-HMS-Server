@@ -52,7 +52,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/hellouser").hasAnyRole("USER", "ADMIN")
 				.antMatchers("/authenticate", "/register", "/validate/{token}", "/api/v1/departments",
 						"/api/v1/departments/{dept_Id}", "/api/v1/users/{username}", "/api/v1/users/role/{role}",
-						"/api/v1/users/delete/{id}","/api/v1/patients","/api/v1/patients/{pid}","/api/v1/medicine","/api/v1/prescription","http://localhost:8080/api/v1/patients/patch/{pid}","/api/v1/labReport")
+						"/api/v1/users/delete/{id}","/api/v1/patients","/api/v1/patients/{pid}","/api/v1/medicine","/api/v1/prescription","http://localhost:8080/api/v1/patients/patch/{pid}","/api/v1/labReport","/api/v1/labReport/upload/{pid}","/api/v1/labReport/{lid}/price",
+						"/api/**")
 				.permitAll().anyRequest().authenticated()
 				.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()

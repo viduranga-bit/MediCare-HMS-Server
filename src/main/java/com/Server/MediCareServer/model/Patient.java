@@ -27,6 +27,7 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long patientId;
+    
     @Column(name = "patient_name")
     private String patientName;
 

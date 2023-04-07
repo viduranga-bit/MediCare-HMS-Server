@@ -97,5 +97,5 @@ public class DAOUser {
 		return address;
 	}
 
-   
+	
 }
