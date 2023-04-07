@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.Server.MediCareServer.model.LabReport;
 import com.Server.MediCareServer.repository.LabReportRepository;
+import com.Server.MediCareServer.dto.labReportDto;
 @Service
 public class labReportService {
 
@@ -47,5 +48,16 @@ public class labReportService {
 public String getNameById(Long rId){
     String name=labReportRepository.getPatientNameFromId(rId);
     return name;
+}
+
+public List<labReportDto> getlabDetails(){
+    List<labReportDto> labReportDetail = labReportRepository.getLabreportDetails();
+    return labReportDetail;
+
+}
+
+public Optional<LabReport> getLabReportById(long pid) {
+    Optional<LabReport> labReport = labReportRepository.findById(pid);
+    return labReport;
 }
 }

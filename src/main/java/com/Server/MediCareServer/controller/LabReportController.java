@@ -1,6 +1,7 @@
 package com.Server.MediCareServer.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.Server.MediCareServer.dto.labReportDto;
 import com.Server.MediCareServer.model.LabReport;
 import com.Server.MediCareServer.repository.LabReportRepository;
 import com.Server.MediCareServer.service.labReportService;
@@ -61,5 +63,20 @@ public class LabReportController {
     @GetMapping("/get-name-by-id/{rId}")
     public String getNameById(@PathVariable ("rId") Long rId ){
         return labReportService.getNameById(rId);
+    }
+
+    @GetMapping("/get-lab-details")
+    public List<labReportDto> getlabDetails() {
+        return labReportService.getlabDetails();
+    }
+
+    @GetMapping(value = "/{pid}") // get patient by patient ID
+    public ResponseEntity<?> getPatinetByID(@PathVariable long pid) {
+        Optional<LabReport> patient = labReportService.getLabReportById(pid);
+
+        if (patient != null) {
+            return new ResponseEntity<>(patient, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
