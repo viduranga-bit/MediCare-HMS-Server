@@ -49,6 +49,9 @@ public class Medicine {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "itemCode")
+    private String itemCode;
+
     @Column(name = "price")
     private String price;
 

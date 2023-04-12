@@ -15,4 +15,6 @@ public interface MedicineRepository extends JpaRepository<Medicine,Long> {
    @Query("FROM Medicine")
     List<Medicine> findAllOrderByNameDsc(Sort sort);
 
+    Medicine findByMedicineName(String name);
+
 }

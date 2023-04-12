@@ -1,25 +1,19 @@
 package com.Server.MediCareServer.controller;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.Server.MediCareServer.dto.labReportDto;
 import com.Server.MediCareServer.model.LabReport;
 import com.Server.MediCareServer.repository.LabReportRepository;
 import com.Server.MediCareServer.service.labReportService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/labReport")
@@ -40,11 +34,12 @@ public class LabReportController {
     public List<LabReport> getAllLabReports() {
         return (List<LabReport>) labreportRepository.findAll();
     }
-    
+
     @PostMapping("/upload/{pid}")
-    public ResponseEntity<String> uploadPdfFile(@PathVariable("pid") Long id, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadPdfFile(@PathVariable("pid") Long id,
+            @RequestParam("file") MultipartFile file) {
         try {
-             labReportService.createPdfFile(id,file.getOriginalFilename(), file.getBytes());
+            labReportService.createPdfFile(id, file.getOriginalFilename(),file.getContentType(), file.getBytes());
             return ResponseEntity.ok("File uploaded successfully with id: " + LabReport.class.getName());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -52,16 +47,25 @@ public class LabReportController {
         }
     }
 
+    @GetMapping("/download/{lid}")
+    public ResponseEntity<ByteArrayResource> downloadFile( @PathVariable(value = "lid")  Long reportId) {
+
+        LabReport doc = labReportService.getLabReportById(reportId).get();
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(doc.getFileType()))
+                .header("Content-Disposition", "inline;filename=\"" + doc.getFileName() + "\"")
+                .body(new ByteArrayResource(doc.getContent()));
+    }
+
     @PostMapping("/{lid}/500")
     public ResponseEntity<LabReport> updateLabReportPrice(@PathVariable(value = "lid") Long labReportId,
             @RequestParam(value = "price") Double price) {
-                System.out.println("labReportId");
+        System.out.println("labReportId");
         LabReport updatedLabReport = labReportService.savePriceForLabReport(labReportId, price);
         return ResponseEntity.ok(updatedLabReport);
     }
-    
+
     @GetMapping("/get-name-by-id/{rId}")
-    public String getNameById(@PathVariable ("rId") Long rId ){
+    public String getNameById(@PathVariable("rId") Long rId) {
         return labReportService.getNameById(rId);
     }
 

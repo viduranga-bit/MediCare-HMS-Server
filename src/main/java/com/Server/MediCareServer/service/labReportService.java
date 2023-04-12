@@ -19,13 +19,14 @@ public class labReportService {
     LabReportRepository labReportRepository;
 
 
-    public void createPdfFile(long id,String fileName,byte[] data) {
+    public void createPdfFile(long id,String fileName,String fileType,byte[] data) {
       
         Optional<LabReport> optionalPdfFile = labReportRepository.findById(id);
         if(optionalPdfFile.isPresent()){
         LabReport pdfFile = optionalPdfFile.get();
         pdfFile.setFileName(fileName);
         pdfFile.setContent(data);
+        pdfFile.setFileType(fileType);
         labReportRepository.save(pdfFile);
        }else {
       throw new EntityNotFoundException("PdfFile not found with id: " + id);

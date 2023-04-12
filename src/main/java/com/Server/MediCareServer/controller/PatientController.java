@@ -50,4 +50,20 @@ public class PatientController {
      public Patient patchPatient(@PathVariable long pid,@RequestBody Map<String ,Object> fields){
           return patientService.updateIsTreatedById(pid,fields);
     }
+
+    @PatchMapping(value = "/isSubmit/{pid}")
+    public Patient updateIsTreatedById(@PathVariable long pid, @RequestBody Map<String, Object> fields) {
+        return patientService.updateIsTreatedById(pid, fields);
+    }
+
+    @GetMapping("/count-by-registration-date")
+    public List<Object[]> getPatientCountByRegistrationDate() {
+        return patientService.getPatientCountByRegistrationDate();
+    }
+
+    @GetMapping("/count-by-receptionist")
+    public List<Object[]> getPatientsByReceptionist() {
+        return patientService.getPatientsByReceptionist();
+    }
+
 }

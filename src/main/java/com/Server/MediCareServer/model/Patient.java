@@ -1,6 +1,7 @@
 package com.Server.MediCareServer.model;
 
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -81,6 +82,9 @@ public class Patient {
 
     @Column(name = "isRequestTest")
     private Boolean isRequestTest;
+
+    @Column(name = "isSubmitReport")
+    private Boolean isSubmitReport;
 
     @ManyToMany
     @JoinTable(name="patient_user",

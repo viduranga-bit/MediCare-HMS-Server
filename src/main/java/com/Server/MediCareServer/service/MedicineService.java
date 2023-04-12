@@ -1,6 +1,8 @@
 package com.Server.MediCareServer.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,11 @@ public class MedicineService {
 
         Sort sort = Sort.by(Sort.Direction.DESC,"medicineId");
         return medicineRepository.findAllOrderByNameDsc(sort);
+    }
+
+    public Optional<Medicine> getMedicineByName(String name){
+        Optional<Medicine> medicine = Optional.ofNullable(medicineRepository.findByMedicineName(name));
+        return  medicine;
     }
 
    

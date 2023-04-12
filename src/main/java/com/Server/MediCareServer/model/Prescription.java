@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 
 @Getter
 @Setter
@@ -26,6 +28,12 @@ public class Prescription {
     @Column(name = "Description")
     private String Description;
 
+    @Column(name = "patient_id")
+    private String patient_id;
+
+    @Column(name = "doc_id")
+    private String doc_id;
+
     @Column(name = "isRequestLabReport")
     private boolean isRequestLabReport;
 
@@ -34,6 +42,9 @@ public class Prescription {
 
     @Column(name = "case_history")
     private String case_history;
+
+    @Column(name = "medicine_issued_date")
+    private Date medicine_issued_date;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_patientId")

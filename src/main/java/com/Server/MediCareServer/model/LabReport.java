@@ -36,6 +36,9 @@ public class LabReport {
 
     @Column(name = "fileName")
     private String fileName;
+
+    @Column(name = "fileType")
+    private String fileType;
     
     @Column(name = "description")
     private String description;
@@ -49,7 +52,7 @@ public class LabReport {
     @Column(name = "price")
     private Double price;
 
-    @Column(name = "doc_id" , insertable = false, updatable = false)
+    @Column(name = "doc_id")
     private String doc_id;
      
     @Temporal(TemporalType.TIME)

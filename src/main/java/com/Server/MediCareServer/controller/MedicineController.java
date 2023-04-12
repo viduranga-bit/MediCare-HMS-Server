@@ -3,12 +3,7 @@ package com.Server.MediCareServer.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.Server.MediCareServer.repository.MedicineRepository;
 import com.Server.MediCareServer.service.MedicineService;
@@ -36,7 +31,18 @@ public class MedicineController {
 
         return medicineService.findAllOrderByIdDsc();
 
-    }   
+    }
+
+    @GetMapping(value = "/{mediName}")
+    @ResponseBody
+    public ResponseEntity<?> getMedicineByName(@PathVariable String mediName){
+        Optional<Medicine> medicine  =medicineService.getMedicineByName(mediName);
+        if (medicine != null) {
+            return new ResponseEntity<>(medicine, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
 
     
