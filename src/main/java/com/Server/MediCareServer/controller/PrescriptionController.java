@@ -1,12 +1,9 @@
 package com.Server.MediCareServer.controller;
 import com.Server.MediCareServer.dto.PrescriptionDTO;
+import com.Server.MediCareServer.model.Medicine;
 import com.Server.MediCareServer.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.Server.MediCareServer.repository.PrescriptionRepository;
 import com.Server.MediCareServer.model.Prescription;
 import java.util.*;
@@ -26,5 +23,10 @@ public class PrescriptionController {
     @GetMapping("/get-prescription-details")
     public List<PrescriptionDTO> getlabDetails() {
         return prescriptionService.getPrescriptionDetails();
+    }
+
+    @PatchMapping(value = "/{pid}")
+    public Prescription patchMedicineIssue(@PathVariable long pid, @RequestBody Map<String ,Object> fields){
+        return prescriptionService.updateIsIssuedMedicine(pid,fields);
     }
 }

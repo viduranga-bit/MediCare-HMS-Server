@@ -40,6 +40,9 @@ public class Prescription {
     @Column(name = "symptoms")
     private String symptoms;
 
+    @Column(name = "isIssuedMedicine")
+    private Boolean isIssuedMedicine;
+
     @Column(name = "case_history")
     private String case_history;
 

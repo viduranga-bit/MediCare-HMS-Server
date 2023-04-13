@@ -43,19 +43,25 @@ public class MedicineAllocation  {
     @Column(name = "medicineName")
     private String medicineName;
 
-    @JsonFormat(pattern = "yyyy-MM-dd",shape = JsonFormat.Shape.STRING)
-    @Column(name = "date_added")
-    private String date_added;
 
     @Column(name = "pharmacistID")
-    private String manufacturingCompany;
+    private String pharmacistID;
+
+    @Column(name = "medicineID")
+    private String medicineID;
+
+    @Column(name = "medicineCode")
+    private String MedicineCode;
+
+    @Column(name = "patientId")
+    private String patientId;
 
     @Temporal(TemporalType.TIME)
     @Column(name = "Time")
     private Date Time=new Date(System.currentTimeMillis());
 
     @Column(name = "qunataty")
-    private String description;
+    private String qunataty;
 
 
 }

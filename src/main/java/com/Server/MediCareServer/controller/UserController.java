@@ -42,6 +42,10 @@ public class UserController {
         return new ResponseEntity<>(userService.getUserByRole(role), HttpStatus.OK);
     }
 
+    @GetMapping(value = "get-all-users") // get users by role
+    public ResponseEntity<List<DAOUser>> getAllUsers() {
+        return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
+    }
     @DeleteMapping("delete/{id}")
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable(value = "id") long id) {
         DAOUser user = userRepository.findById(id)
